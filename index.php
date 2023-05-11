@@ -30,3 +30,45 @@
  * - Performance of the completed structure.
  * - Frontend Display/Layout/Template to process data using Javascript and CSS.
  */
+
+$global_data = array(
+	new Category( 'Mens', array( new Product( 'Blue Shirt' ), new Product( 'Red T-Shirt' ), new Product( 'Blue Shirt' ), new Product( 'Red T-Shirt' ), new Product( 'Blue Shirt' ), new Product( 'Red T-Shirt' ) ) ),
+	new Category( 'Kids', array( new Product( 'Sneakers' ), new Product( 'Toy car' ) ) ),
+);
+
+/**
+ * Return a product inside a category.
+ *
+ * @param string $category_name Category name to look for.
+ * @param array  $categories Catogries to check through.
+ *
+ * @return array
+ */
+function get_products_in_category( string $category_name, array $categories ) {
+	foreach ( $categories as $category ) {
+		if ( $category->name === $category_name ) {
+			return $category->products;
+		}
+	}
+	return null;
+}
+
+/**
+ * Check if a product exsists in a category.
+ *
+ * @param string $product_name Product name to look for.
+ * @param array  $categories Catogries to check through.
+ *
+ * @return bool
+ */
+function does_product_exsist_in_category( string $product_name, array $categories ): bool {
+	foreach ( $categories as $category ) {
+		foreach ( $category->products as $product ) {
+			if ( $product->name === $product_name ) {
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
