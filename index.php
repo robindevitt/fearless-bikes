@@ -45,6 +45,14 @@ $global_data = array(
 	new Category( 'Kids', array( new Product( 'Sneakers' ), new Product( 'Toy car' ) ) ),
 );
 
+// Showcase adding extra data to the global data.
+$extra_data = array(
+	new Category( 'Women', array( new Product( 'White Skirt' ), new Product( 'Blue Blouse' ) ) ),
+	new Category( 'Accessories', array( new Product( 'Wallet' ), new Product( 'Backpack' ) ) ),
+);
+
+$global_data = array_merge( $global_data, $extra_data );
+
 /**
  * Return a product inside a category.
  *
