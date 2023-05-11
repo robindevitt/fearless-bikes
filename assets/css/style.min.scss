@@ -29,11 +29,17 @@
 			min-width: 240px;
 			display: block;
 			margin: 1%;
-			padding: 1%;
+			padding: 10px;
 			box-sizing: border-box;
 			background-color: #ccc;
 			border-radius: 6px;
 			text-align: center;
+
+			img{
+				width: 100%;
+				height: auto;
+				border-radius: 6px;
+			}
 
 			// Media query for smaller screens.
 			@media screen and ( max-width: 900px ){
