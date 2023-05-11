@@ -41,6 +41,27 @@ require_once 'product-functions.php';
 
 global $global_data;
 
+/**
+ * Create an advanced product class.
+ */
+class AdvancedProduct extends Product {
+	public string $price;
+	public string $image;
+
+	/**
+	 * Construct
+	 *
+	 * @param string $name Product name.
+	 * @param string $price Product price.
+	 * @param string $image Product image.
+	 */
+	public function __construct( string $name, string $price, string $image ) {
+		parent::__construct( $name );
+		$this->price = $price;
+		$this->image = $image;
+	}
+}
+
 $global_data = array(
 	new Category( 'Mens', array( new Product( 'Blue Shirt' ), new Product( 'Red T-Shirt' ) ) ),
 	new Category( 'Kids', array( new Product( 'Sneakers', ), new Product( 'Toy car' ) ) ),
