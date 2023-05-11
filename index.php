@@ -31,6 +31,15 @@
  * - Frontend Display/Layout/Template to process data using Javascript and CSS.
  */
 
+echo '<style>';
+	require_once 'assets/css/style.min.css';
+echo '</style>';
+
+require_once 'class-product.php';
+require_once 'class-category.php';
+
+global $global_data;
+
 $global_data = array(
 	new Category( 'Mens', array( new Product( 'Blue Shirt' ), new Product( 'Red T-Shirt' ), new Product( 'Blue Shirt' ), new Product( 'Red T-Shirt' ), new Product( 'Blue Shirt' ), new Product( 'Red T-Shirt' ) ) ),
 	new Category( 'Kids', array( new Product( 'Sneakers' ), new Product( 'Toy car' ) ) ),
