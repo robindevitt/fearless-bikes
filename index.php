@@ -45,25 +45,28 @@ global $global_data;
  * Create an advanced product class.
  */
 class AdvancedProduct extends Product {
-	public string $price;
 	public string $image;
+	public string $price;
+	public string $description;
 
 	/**
 	 * Construct
 	 *
 	 * @param string $name Product name.
-	 * @param string $price Product price.
 	 * @param string $image Product image.
+	 * @param string $price Product price.
+	 * @param string $description Product description.
 	 */
-	public function __construct( string $name, string $price, string $image ) {
+	public function __construct( string $name, string $image, string $price, string $description ) {
 		parent::__construct( $name );
-		$this->price = $price;
-		$this->image = $image;
+		$this->image       = $image;
+		$this->price       = $price;
+		$this->description = $description;
 	}
 }
 
 $global_data = array(
-	new Category( 'Mens', array( new Product( 'Blue Shirt' ), new Product( 'Red T-Shirt' ) ) ),
+	new Category( 'Mens', array( new AdvancedProduct( 'Blue Shirt', '', 'R150', '' ), new Product( 'Red T-Shirt' ) ) ),
 	new Category( 'Kids', array( new Product( 'Sneakers', ), new Product( 'Toy car' ) ) ),
 );
 
