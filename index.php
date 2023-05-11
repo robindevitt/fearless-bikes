@@ -54,9 +54,10 @@ $global_data = array(
  * @return array
  */
 function get_products_in_category( string $category_name, array $categories ) {
+	$return_categories = array();
 	foreach ( $categories as $category ) {
 		if ( $category->name === $category_name ) {
-			return $category->products;
+			return array( $category );
 		}
 	}
 	return null;
