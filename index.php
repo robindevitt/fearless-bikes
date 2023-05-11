@@ -90,3 +90,44 @@ function does_product_exsist_in_category( string $product_name, array $categorie
 	return false;
 }
 
+/**
+ * Function to render products.
+ *
+ * @param string $category Category to render, leaving it blank shows all categories.
+ * @param array  $categories Catogries to loop through.
+ */
+function render_products( string $category, array $categories ) {
+
+	if ( ! empty( $category ) ) {
+		$categories = get_products_in_category( $category, $categories );
+	}
+
+	$html = '<div id="render_wrapper">';
+	foreach ( $categories as $category ) {
+
+		$html .= '<section class="category_wrapper">';
+
+			$html .= '<h2 class="category_title">' . $category->name . '</h2>';
+
+			$html .= '<div class="all_products_wrapper">';
+				// Loop through each of the products.
+		foreach ( $category->products as $product ) {
+			$html .= '<div class="product_wrapper">';
+
+				$img   = ( isset( $category->image ) ? $category->image : 'default.png' );
+				$html .= '<img alt="' . $product->name . '" src="assets/images/' . $img . '" />';
+
+				$html .= '<h3 class="product_title">' . $product->name . '</h3>';
+
+			$html .= '</div>';
+		}
+			$html .= '</div>';
+
+		$html .= '</section>';
+	}
+	$html .= '</div>';
+
+	return $html;
+}
+
+echo render_products( '', $global_data );
