@@ -1,0 +1,17 @@
+{
+    "name": "robindevitt/fearless-bikes",
+    "require": {
+        "phpunit/phpunit": "^9.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "Robindevitt\\FearlessBikes\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Robin Devitt",
+            "email": "iamrobindevitt@gmail.com"
+        }
+    ]
+}
