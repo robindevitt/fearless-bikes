@@ -5,7 +5,13 @@ require_once './class-category.php';
 require_once './class-product.php';
 require_once './class-productlookup.php';
 
+/**
+ * Get Product Category tests.
+ */
 final class GetProductCategoryTest extends TestCase {
+	/**
+	 * Setup.
+	 */
 	protected function setUp(): void {
 		$this->categories = array(
 			new Category(
