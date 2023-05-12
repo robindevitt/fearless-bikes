@@ -4,7 +4,7 @@ This is a repo with a showcase of some basic php functions to render some predet
 ## Available Functions
 
 #### Check if a product exsists in a category
-```
+```php
 $product_lookup = new ProductLookup();
 $product_lookup->does_product_exist_in_category( string $product_name, string $category_name, array $categories );
 ```
@@ -17,7 +17,7 @@ It's paramaters are:
 
 
 #### Return the products within a cateogry
-```
+```php
 $product_lookup = new ProductLookup();
 product_lookup->get_products_in_category( string $category_name, array $categories, string $product_name = '');
 ```
@@ -30,7 +30,7 @@ It's paramaters are:
 
 
 #### Render products
-```
+```php
 $product_lookup = new ProductLookup();
 $product_lookup->render_products();
 ```
