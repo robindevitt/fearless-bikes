@@ -5,6 +5,11 @@
 	padding: 20px;
 	box-sizing: border-box;
 
+	// No Category Style.
+	&.no_category{
+		text-align: center;
+	}
+
 	// Category wrapper style.
 	.category_wrapper{
 		// Category title style.
