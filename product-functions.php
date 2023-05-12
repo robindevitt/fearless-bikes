@@ -30,7 +30,7 @@ function get_products_in_category( string $category_name, array $categories ) {
  *
  * @return bool
  */
-function does_product_exsist_in_category( string $product_name, string $category_name, array $categories ): bool {
+function does_product_exist_in_category( string $product_name, string $category_name, array $categories ): bool {
 	foreach ( $categories as $category ) {
 		if ( $category->name === $category_name ) {
 			foreach ( $category->products as $product ) {
