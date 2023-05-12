@@ -7,11 +7,13 @@
 
 	// No Category Style.
 	&.no_category{
-		text-align: center;
+		display: flex;
+		justify-content: center;
 	}
 
 	// Category wrapper style.
 	.category_wrapper{
+		margin-bottom: 50px;
 		// Category title style.
 		.category_title{
 			width: 100%;
@@ -29,33 +31,34 @@
 		flex-wrap: wrap;
 		justify-content: center;
 		
-		// Product Style.
-		.product_wrapper{
-			width: 23%;
-			min-width: 240px;
-			display: block;
-			margin: 1%;
-			padding: 20px;
-			box-sizing: border-box;
-			background-color: #ccc;
+	}
+
+	// Product Style.
+	.product_wrapper {
+		width: 23%;
+		min-width: 240px;
+		display: block;
+		margin: 1%;
+		padding: 20px;
+		box-sizing: border-box;
+		background-color: #ccc;
+		border-radius: 6px;
+		text-align: center;
+
+		img {
+			width: 100%;
+			height: auto;
 			border-radius: 6px;
-			text-align: center;
+		}
 
-			img{
-				width: 100%;
-				height: auto;
-				border-radius: 6px;
-			}
+		//Product Title Style.
+		.product_title {
+			margin: 10px 0 10px 0;
+		}
 
-			//Product Title Style.
-			.product_title{
-				margin: 10px 0 10px 0;
-			}
-
-			// Media query for smaller screens.
-			@media screen and ( max-width: 900px ){
-				width: 31%;
-			}
+		// Media query for smaller screens.
+		@media screen and (max-width: 900px) {
+			width: 31%;
 		}
 	}
 }
