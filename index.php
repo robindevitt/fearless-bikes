@@ -66,14 +66,14 @@ class AdvancedProduct extends Product {
 }
 
 $global_data = array(
-	new Category( 'Mens', array( new AdvancedProduct( 'Blue Shirt', '', 'R150', '' ), new Product( 'Red T-Shirt' ) ) ),
-	new Category( 'Kids', array( new Product( 'Sneakers', ), new Product( 'Toy car' ) ) ),
+	new Category( 'Mens', array( new AdvancedProduct( 'Blue Tee', 'blue-tee.jpeg', 'R150', '' ), new AdvancedProduct( 'Olive Tee', 'olive-tee.jpeg', 'R150', '' ) ) ),
+	new Category( 'Kids', array( new AdvancedProduct( 'Sneaker', 'sneaker.jpeg', 'R1250', '' ), new Product( 'Toy car' ) ) ),
 );
 
 // Showcase adding extra data to the global data.
 $extra_data = array(
 	new Category( 'Women', array( new Product( 'White Skirt' ), new Product( 'Blue Blouse' ) ) ),
-	new Category( 'Accessories', array( new Product( 'Wallet' ), new Product( 'Backpack' ) ) ),
+	new Category( 'Accessories', array( new AdvancedProduct( 'Hat', 'olive-hat.jpeg', 'R199', '' ), new Product( 'Backpack' ) ) ),
 );
 
 $global_data = array_merge( $global_data, $extra_data );

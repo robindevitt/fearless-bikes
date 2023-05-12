@@ -65,8 +65,8 @@ function render_products( string $category, array $categories ) {
 		foreach ( $category->products as $product ) {
 			$html .= '<div class="product_wrapper">';
 
-				$img   = ( isset( $product->image ) && ! empty( $product->image ) ? $product->image : 'default.png' );
-				$html .= '<img width="240" height="240" alt="' . $product->name . '" src="assets/images/' . $img . '" />';
+				$img   = ( isset( $product->image ) && ! empty( $product->image ) ? 'media/' . $product->image : 'assets/images/default.png' );
+				$html .= '<img width="240" height="240" alt="' . $product->name . '" src="' . $img . '" />';
 
 				$html .= '<h3 class="product_title">' . $product->name . '</h3>';
 
