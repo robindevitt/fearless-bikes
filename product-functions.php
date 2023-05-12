@@ -25,15 +25,18 @@ function get_products_in_category( string $category_name, array $categories ) {
  * Check if a product exsists in a category.
  *
  * @param string $product_name Product name to look for.
- * @param array  $categories Catogries to check through.
+ * @param string $category_name Category name to look though.
+ * @param array  $categories All categories.
  *
  * @return bool
  */
-function does_product_exsist_in_category( string $product_name, array $categories ): bool {
+function does_product_exsist_in_category( string $product_name, string $category_name, array $categories ): bool {
 	foreach ( $categories as $category ) {
-		foreach ( $category->products as $product ) {
-			if ( $product->name === $product_name ) {
-				return true;
+		if ( $category->name === $category_name ) {
+			foreach ( $category->products as $product ) {
+				if ( $product->name === $product_name ) {
+					return true;
+				}
 			}
 		}
 	}
