@@ -58,24 +58,31 @@ function render_products( string $category, array $categories ) {
 
 		$html .= '<section class="category_wrapper">';
 
+			// Category Title.
 			$html .= '<h2 class="category_title">' . $category->name . '</h2>';
 
 			$html .= '<div class="all_products_wrapper">';
-				// Loop through each of the products.
-		foreach ( $category->products as $product ) {
-			$html .= '<div class="product_wrapper">';
+				if ( isset( $category->products ) && ! empty( $category->products ) ) { // Check there are products before trying to render them.
+					foreach ( $category->products as $product ) { // Loop through each of the products.
+						$html .= '<div class="product_wrapper">';
 
-				$img   = ( isset( $product->image ) && ! empty( $product->image ) ? 'media/' . $product->image : 'assets/images/default.png' );
-				$html .= '<img width="240" height="240" alt="' . $product->name . '" src="' . $img . '" />';
+							// Show the image if it's set.
+							$img   = ( isset( $product->image ) && ! empty( $product->image ) ? 'media/' . $product->image : 'assets/images/default.png' );
+							$html .= '<img width="240" height="240" alt="' . $product->name . '" src="' . $img . '" />';
 
-				$html .= '<h3 class="product_title">' . $product->name . '</h3>';
+							// Product name.
+							$html .= '<h3 class="product_title">' . $product->name . '</h3>';
 
-			if ( isset( $product->price ) ) {
-				$html .= '<div class="product_price">' . $product->price . '</div>';
-			}
+							// Show Pricing if it's set.
+							if ( isset( $product->price ) ) {
+								$html .= '<div class="product_price">' . $product->price . '</div>';
+							}
 
-			$html .= '</div>';
-		}
+						$html .= '</div>';
+					} // End of foreach loop.
+				} else { // Else show this message when there are no products.
+					$html .= 'No products to show in this category.';
+				}
 			$html .= '</div>';
 
 		$html .= '</section>';

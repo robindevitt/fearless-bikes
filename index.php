@@ -68,6 +68,7 @@ class AdvancedProduct extends Product {
 $global_data = array(
 	new Category( 'Mens', array( new AdvancedProduct( 'Blue Tee', 'blue-tee.jpeg', 'R150', '' ), new AdvancedProduct( 'Olive Tee', 'olive-tee.jpeg', 'R150', '' ) ) ),
 	new Category( 'Kids', array( new AdvancedProduct( 'Sneaker', 'sneaker.jpeg', 'R1250', '' ), new Product( 'Toy car' ) ) ),
+	new Category( 'Sports', array() ),
 );
 
 // Showcase adding extra data to the global data.
@@ -78,4 +79,4 @@ $extra_data = array(
 
 $global_data = array_merge( $global_data, $extra_data );
 
-echo render_products( '', $global_data );
+echo render_products( 'Sports', $global_data );
