@@ -3,9 +3,6 @@
  * Product Category.
  */
 class Category {
-	public string $name;
-	public array $products;
-
 	/**
 	 * Construct.
 	 *
@@ -16,5 +13,4 @@ class Category {
 		$this->name     = $name;
 		$this->products = $products;
 	}
-
 }

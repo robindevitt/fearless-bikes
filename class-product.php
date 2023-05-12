@@ -3,8 +3,6 @@
  * Product Class.
  */
 class Product {
-	public string $name;
-
 	/**
 	 * Construct
 	 *
