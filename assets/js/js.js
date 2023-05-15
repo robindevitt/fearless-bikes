@@ -1,16 +1,19 @@
-// Sorting.
-$('#sort_categories').change(function () {
-	var value = $('#sort_categories option:selected').val();
+// Sorting options for re-use if neeeded.
+const sortingOptions = {
+	'categories-az': { attribute: 'category', reverse: false, sortCategories: true, sortProducts: false },
+	'categories-za': { attribute: 'category', reverse: true, sortCategories: true, sortProducts: false },
+	'products-az': { attribute: 'category', reverse: false, sortCategories: false, sortProducts: true },
+	'products-za': { attribute: 'category', reverse: true, sortCategories: false, sortProducts: true },
+	'all-az': { attribute: 'category', reverse: false, sortCategories: true, sortProducts: true },
+	'all-za': { attribute: 'category', reverse: true, sortCategories: true, sortProducts: true },
+};
+// Setup the sorting based on selection.
+$('#sort').change(function () {
+	var value = $('#sort option:selected').val();
 	var container = $('#render_wrapper');
-	var sortCategories;
-
-	if (value == 'a-z') {
-		sortCategories = sortCategoryWrapperByDataAttribute('category');
-	} else if (value == 'z-a') {
-		sortCategories = sortCategoryWrapperByDataAttribute('category', true);
-	}
-
-	container.detach().empty().append(sortCategories);
+	var sortingParams = sortingOptions[value];
+	var sortedCategories = sortCategoryWrapperByDataAttribute(sortingParams.attribute, sortingParams.reverse, sortingParams.sortCategories, sortingParams.sortProducts);
+	container.detach().empty().append(sortedCategories);
 	$('body').append(container);
 });
 
@@ -49,22 +52,45 @@ $('#search').keyup(user_input_dealy(function (e) {
 }, 400));
 
 // Function to sort the categories alphabetically.
-function sortCategoryWrapperByDataAttribute(attribute, reverse = false) {
-	var sortFunction = function (a, b) {
-		var aVal = $(a).data(attribute);
-		var bVal = $(b).data(attribute);
-		return String.prototype.localeCompare.call(aVal, bVal);
-	};
-
-	if (reverse) {
-		sortFunction = function (a, b) {
+function sortCategoryWrapperByDataAttribute(attribute, reverse = false, sortCategories = false, sortProducts = false) {
+	// Sort categories
+	if (sortCategories){
+		var sortFunction = function (a, b) {
 			var aVal = $(a).data(attribute);
 			var bVal = $(b).data(attribute);
-			return String.prototype.localeCompare.call(bVal, aVal);
+			if (reverse) {
+				return String.prototype.localeCompare.call(bVal, aVal);
+			} else {
+				return String.prototype.localeCompare.call(aVal, bVal);
+			}
 		};
+
+		var sortedCategories = $('.category_wrapper').sort(sortFunction);
+
 	}
 
-	return $('.category_wrapper').sort(sortFunction);
+	// Sort products.
+	if (sortProducts) {
+		var sortedCategories = $('.category_wrapper').sort(sortFunction);
+
+		sortedCategories.each(function () {
+			var productsWrapper = $(this).find('.all_products_wrapper');
+			var sortedProducts = productsWrapper.children('.product_wrapper').sort(function (a, b) {
+				var aVal = $(a).find('.product_title').text();
+				var bVal = $(b).find('.product_title').text();
+
+				if (reverse) {
+					return String.prototype.localeCompare.call(bVal, aVal);
+				} else {
+					return String.prototype.localeCompare.call(aVal, bVal);
+				}
+				
+			});
+			productsWrapper.append(sortedProducts);
+		});
+	}
+
+	return sortedCategories;
 }
 
 // setup the delay of the search.
