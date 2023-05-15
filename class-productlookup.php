@@ -72,7 +72,17 @@ class ProductLookup {
 		}
 		$html = '<div id="filters">';
 
-			$html .= '<div class="select"><select id="sort_categories"><option value="" disabled selected>Sort Categories</option><option value="a-z">Sort Categories A - Z</option><option value="z-a">Sort Categories Z - A</option></select></div>';
+			$html .= '<div class="select">
+					<select id="sort">
+						<option value="" disabled selected>Sort</option>
+						<option value="categories-az">Sort Categories A - Z</option>
+						<option value="categories-za">Sort Categories Z - A</option>
+						<option value="products-az">Sort Products A - Z</option>
+						<option value="products-za">Sort Products Z - A</option>
+						<option value="all-az">Sort All A - Z</option>
+						<option value="all-za">Sort All Z - A</option>
+					</select>
+				</div>';
 			$html .= '<input name="search" id="search" type="text" placeholder="Search products..."/>';
 		$html     .= '</div>';
 
