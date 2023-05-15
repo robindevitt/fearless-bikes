@@ -36,7 +36,6 @@
 	// Product Style.
 	.product_wrapper {
 		width: 23%;
-		min-width: 240px;
 		display: block;
 		margin: 1%;
 		padding: 20px;
@@ -57,8 +56,46 @@
 		}
 
 		// Media query for smaller screens.
-		@media screen and (max-width: 900px) {
+		@media screen and (max-width: 950px) {
 			width: 31%;
 		}
+		@media screen and (max-width: 700px) {
+			width: 48%;
+		}
+		@media screen and (max-width: 400px) {
+			width: 98%;
+		}
+	}
+}
+
+#filters {
+	width: 100%;
+	text-align: center;
+	padding: 20px;
+
+	.select {
+		display: inline-block;
+		border: 2px solid #000;
+		padding-right: 10px;
+		margin: 0 10px;
+
+		select {
+			border:0px;
+			display: inline-block;
+			border-radius: 3px;
+			background-color: #fff;
+			font-size: 16px;
+			padding: 10px;
+			outline: none;
+		}
+	}
+
+	#search{
+		display: inline-block;
+		background-color: #fff;
+		font-size: 16px;
+		padding: 10px;
+		outline: none;
+		margin: 0 10px;
 	}
 }
