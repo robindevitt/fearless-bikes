@@ -7,6 +7,7 @@ echo '<style>';
 	require_once 'assets/css/style.min.css';
 echo '</style>';
 
+
 require_once 'class-product.php';
 require_once 'class-category.php';
 require_once 'class-productlookup.php';
@@ -23,26 +24,24 @@ class AdvancedProduct extends Product {
 	 * @param string $name Product name.
 	 * @param string $image Product image.
 	 * @param string $price Product price.
-	 * @param string $description Product description.
+	 * @param string $description Product Description.
 	 */
 	public function __construct( string $name, string $image, string $price, string $description ) {
-		parent::__construct( $name );
-		$this->image       = $image;
+		parent::__construct( $name, $image );
 		$this->price       = $price;
 		$this->description = $description;
 	}
 }
 
 $global_data = array(
-	new Category( 'Mens', array( new AdvancedProduct( 'Blue Tee', 'blue-tee.jpeg', 'R150', '' ), new AdvancedProduct( 'Olive Tee', 'olive-tee.jpeg', 'R150', '' ) ) ),
-	new Category( 'Kids', array( new AdvancedProduct( 'Sneaker', 'sneaker.jpeg', 'R1250', '' ), new Product( 'Toy car' ) ) ),
-	new Category( 'Sports', array() ),
+	new Category( 'Mens', array( new AdvancedProduct( 'Blue Tee', 'blue-tee.jpg', 'R150', '' ), new AdvancedProduct( 'Olive Tee', 'olive-tee.jpg', 'R150', '' ), new AdvancedProduct( 'Navy Tee', 'navy-tee.jpg', 'R150', '' ), new AdvancedProduct( 'Charcoal Tee', 'charcoal-tee.jpg', 'R150', '' ) ) ),
+	new Category( 'Kids', array() ),
 );
 
 // Showcase adding extra data to the global data.
 $extra_data = array(
-	new Category( 'Women', array( new Product( 'White Skirt' ), new Product( 'Blue Blouse' ) ) ),
-	new Category( 'Accessories', array( new AdvancedProduct( 'Hat', 'olive-hat.jpeg', 'R199', '' ), new Product( 'Backpack' ) ) ),
+	new Category( 'Women', array( new Product( 'Blue-wash Tee', 'blue-wash-tee-women.jpg' ), new Product( 'Blue Tee', 'blue-tee-women.jpg' ), new Product( 'White Tee', 'white-tee-women.jpg' ), new Product( 'Olive Tee', 'olive-tee-women.jpg' ) ) ),
+	new Category( 'Accessories', array( new AdvancedProduct( 'Blue Beanie', 'beanie-blue.jpg', 'R199', '' ), new AdvancedProduct( 'Charcoal Beanie', 'beanie-charcoal.jpg', 'R199', '' ), new AdvancedProduct( 'Green Beanie', 'beanie-green.jpg', 'R199', '' ), new Product( 'Belt', 'belt.jpg' ), new Product( 'Olive Hat', 'olive-hat.jpg' ) ) ),
 );
 
 $global_data = array_merge( $global_data, $extra_data );
@@ -69,3 +68,9 @@ $product_lookup = new ProductLookup();
  * removing the categoy and product name it or leaving the, blank shows all categories and all products.
  */
 echo $product_lookup->render_products( $global_data );
+
+
+echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>';
+echo '<script>';
+	require_once 'assets/js/js.min.js';
+echo '</script>';
