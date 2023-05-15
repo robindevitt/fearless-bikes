@@ -74,7 +74,6 @@ class ProductLookup {
 
 			$html .= '<div class="select"><select id="sort_categories"><option value="" disabled selected>Sort Categories</option><option value="a-z">Sort Categories A - Z</option><option value="z-a">Sort Categories Z - A</option></select></div>';
 			$html .= '<input name="search" id="search" type="text" placeholder="Search products..."/>';
-			$html .= '<p class="broken"></p><p class="unbroken"></p>';
 		$html     .= '</div>';
 
 		$html .= '<div id="render_wrapper">';
