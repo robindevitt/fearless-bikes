@@ -55,6 +55,7 @@ class ProductLookup {
 	 *
 	 * @param array  $categories Catogries to loop through.
 	 * @param string $category Category to render, leaving it blank shows all categories.
+	 * @param string $product_name Product name to return.
 	 */
 	public function render_products( array $categories, string $category = '', string $product_name = '' ) {
 
@@ -69,31 +70,34 @@ class ProductLookup {
 		if ( ! empty( $product_name ) && ! empty( $category ) ) {
 			return '<div id="render_wrapper" class="no_category">' . $this->product_render( (array) $categories ) . '</div>';
 		}
+		$html = '<div id="filters">';
 
-		$html = '<div id="render_wrapper">';
+			$html .= '<div class="select"><select id="sort_categories"><option value="" disabled selected>Sort Categories</option><option value="a-z">Sort Categories A - Z</option><option value="z-a">Sort Categories Z - A</option></select></div>';
+			$html .= '<input name="search" id="search" type="text" placeholder="Search products..."/>';
+			$html .= '<p class="broken"></p><p class="unbroken"></p>';
+		$html     .= '</div>';
+
+		$html .= '<div id="render_wrapper">';
+
 		foreach ( $categories as $category ) {
-
-			$html .= '<section class="category_wrapper">';
-
-				// Category Title.
-				$html .= '<h2 class="category_title">' . $category->name . '</h2>';
-
-				$html .= '<div class="all_products_wrapper">';
 
 			if ( isset( $category->products ) && ! empty( $category->products ) ) { // Check there are products before trying to render them.
 
+				$html .= '<section class="category_wrapper" data-category="' . strtolower( str_replace( ' ', '', $category->name ) ) . '">';
+
+					// Category Title.
+					$html .= '<h2 class="category_title">' . $category->name . '</h2>';
+
+					$html .= '<div class="all_products_wrapper">';
+
 				foreach ( $category->products as $product ) { // Loop through each of the products.
-					$html .= $this->product_render( (array) $product );
+							$html .= $this->product_render( (array) $product );
 				} // End of foreach loop.
-			} else { // Else show this message when there are no products.
 
-				$html .= 'No products to show in this category.';
+					$html .= '</div>';
 
+				$html .= '</section>';
 			}
-
-				$html .= '</div>';
-
-			$html .= '</section>';
 		}
 		$html .= '</div>';
 
