@@ -50,6 +50,7 @@ $product_lookup = new ProductLookup();
 echo '<!DOCTYPE html><html>';
 	echo '<head>';
 		echo '<title>Fearless Bikes Demo</title>';
+		echo '<meta name="viewport" content="width=device-width, initial-scale=1.0">';
 	echo '</head>';
 
 	echo '<body>';
