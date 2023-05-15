@@ -47,30 +47,39 @@ $extra_data = array(
 $global_data = array_merge( $global_data, $extra_data );
 
 $product_lookup = new ProductLookup();
+echo '<!DOCTYPE html><html>';
+	echo '<head>';
+		echo '<title>Fearless Bikes Demo</title>';
+	echo '</head>';
 
-/**
- * Check if a product exsists in a specific cateogry.
- * You can deine the product name and the category.
- * Returns true if the product is in the category and false if it doesn't.
- */
-// var_dump( $product_lookup->does_product_exist_in_category( 'Blue Tee', 'Mens', $global_data ) );
+	echo '<body>';
+		/**
+		 * Check if a product exsists in a specific cateogry.
+		 * You can deine the product name and the category.
+		 * Returns true if the product is in the category and false if it doesn't.
+		 */
+		// var_dump( $product_lookup->does_product_exist_in_category( 'Blue Tee', 'Mens', $global_data ) );
 
-/**
- * Get the products in a specific category.
- * You can define a particular product or get all
- * returns an array.
- */
-// var_dump( $product_lookup->get_products_in_category( 'Mens', $global_data ) );
+		/**
+		 * Get the products in a specific category.
+		 * You can define a particular product or get all
+		 * returns an array.
+		 */
+		// var_dump( $product_lookup->get_products_in_category( 'Mens', $global_data ) );
 
-/**
- * Render the products of a specific category.
- * This one has "Mens" category specified and a specific product
- * removing the categoy and product name it or leaving the, blank shows all categories and all products.
- */
-echo $product_lookup->render_products( $global_data );
+		/**
+		 * Render the products of a specific category.
+		 * This one has "Mens" category specified and a specific product
+		 * removing the categoy and product name it or leaving the, blank shows all categories and all products.
+		 */
+		echo $product_lookup->render_products( $global_data );
 
 
-echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>';
-echo '<script>';
-	require_once 'assets/js/js.min.js';
-echo '</script>';
+		echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>';
+		echo '<script>';
+			require_once 'assets/js/js.min.js';
+		echo '</script>';
+
+	echo '</body>';
+
+echo '</html>';
